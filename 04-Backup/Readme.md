@@ -1,4 +1,4 @@
-### Min.io Kurulum & Yapılandırma ###
+### 1.Bölüm, (***Min.io***) Kurulum & Yapılandırma ###
 
 ### İhtiyaçlar:
 
@@ -73,5 +73,36 @@ docker compose up -d
 
 ##### 5.Adım, Minio'da yeni bucket oluşturma.
 #### [Minio Bucket oluşturma adımlarını buradan izleyebilirisiniz.](https://youtu.be/0zoI_BkPIrk)
+
+****
+
+### 2. Bölüm, (***Storj.io***) Kurulum & Yapılandırma ###
+##### 1.Adım, Storj uygulaması için unzip yazılımını kurmamız gerekmektedir. 
+```bash
+sudo apt install unzip
+```
+
+##### 2.Adım, Storj'un uplink adındaki uygulamasını proje klasörümüze indirelim. 
+```bash
+curl -L https://github.com/storj/storj/releases/latest/download/uplink_linux_amd64.zip -o uplink_linux_amd64.zip
+```
+
+##### 3.Adım, download ettiğimiz uplink programını arşivden çıkaralım.
+```bash
+unzip -o uplink_linux_amd64.zip
+```
+
+##### 4.Adım, uplink yazılımını "**/usr/local/bin/**" kurulumunu yapalım.
+```bash
+sudo install uplink /usr/local/bin/uplink
+```
+
+##### 5.Adım, uplink yazılımını "**/usr/local/bin/**" kurulumunu yapalım.
+```bash
+sudo install uplink /usr/local/bin/uplink
+```
+
+##### 6.Adım, Storj Yapılandırma & Velero kullanımı.
+#### [Storj & Velero adımlarını buradan izleyebilirisiniz.](https://youtu.be/Ty7KKkhf_XQ)
 
 ## [Ana menüye dön](https://github.com/techakademi/Highly-Availiable-Kubernetes)

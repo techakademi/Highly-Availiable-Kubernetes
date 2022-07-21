@@ -222,4 +222,4 @@ Keepalived kontrolünü gerçekleştirmek için sanal IP adresimiz ile haproxy s
 
 [http://192.168.1.239:1936/haproxy?stats](http://192.168.1.239:1936/haproxy?stats)
 
-[Üst menüye dön](./README.md)
+## [Üst menüye dön](https://github.com/techakademi/Highly-Availiable-Kubernetes)

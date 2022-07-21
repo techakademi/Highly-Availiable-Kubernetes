@@ -50,7 +50,7 @@ sudo nano /etc/fstab
 Aşağıdaki Satırı en alta ekleyip **"ctrl+o"** ile kaydetip **"ctrl+x"** ile çıkış yap.
 
 ```nano
-192.168.1.45:/Minio /mnt/Minioverinoktasi nfs defaults,bg 0 0 
+192.168.1.45:/Minio /mnt/Minioverinoktasi nfs defaults,bg 0 0
 ```
 ### Minio Yapılandırma ve Çalıştırma ###
 
@@ -73,3 +73,5 @@ docker compose up -d
 
 ##### 5.Adım, Minio'da yeni bucket oluşturma.
 #### [Minio Bucket oluşturma adımlarını buradan izleyebilirisiniz.](https://youtu.be/0zoI_BkPIrk)
+
+## [Üst menüye dön](https://github.com/techakademi/Highly-Availiable-Kubernetes)

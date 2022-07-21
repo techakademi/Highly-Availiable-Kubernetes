@@ -74,4 +74,4 @@ docker compose up -d
 ##### 5.Adım, Minio'da yeni bucket oluşturma.
 #### [Minio Bucket oluşturma adımlarını buradan izleyebilirisiniz.](https://youtu.be/0zoI_BkPIrk)
 
-## [Üst menüye dön](https://github.com/techakademi/Highly-Availiable-Kubernetes)
+## [Ana menüye dön](https://github.com/techakademi/Highly-Availiable-Kubernetes)

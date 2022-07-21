@@ -116,4 +116,4 @@ qm template 3333
 
 Tebrikler, komut satırı kullanrak Proxmox'da şablon sunucu oluşturma çalışmasını böylece tamamalamış olduk.
 
-## [Üst menüye dön](https://github.com/techakademi/Highly-Availiable-Kubernetes)
+## [Ana menüye dön](https://github.com/techakademi/Highly-Availiable-Kubernetes)

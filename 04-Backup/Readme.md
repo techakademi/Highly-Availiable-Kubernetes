@@ -66,7 +66,7 @@ docker compose up -d
 
 ##### 3.Adım, Docker Sunucu IP adresi & Minio port'unu kullanarak Kullanıcı arayüzüne erişelim.
 
-#### [http://192.168.1.59:9001](http://192.168.1.59:9001)
+#### [http://Sunucunun_IP_Adresi:9001](http://#:9001)
 
 ##### 4.Adım, Minio'da yeni bir servis hesabı oluşturma.
 #### [Minio Servis hesabı oluşturma adımlarını buradan izleyebilirisiniz.](https://youtu.be/0zoI_BkPIrk)

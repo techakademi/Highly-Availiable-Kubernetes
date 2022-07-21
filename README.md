@@ -2,13 +2,11 @@
 
 # High Available Kubernetes Bare Metal Notlar
 
-## 0. Araçlar [Cluster Kurulumunda kullanacağımız Araçlar](https://github.com/techakademi/OCI-Kubernetes-Notlar/blob/main/00-Araclar)
+## 1. [Proxmox Hypervisor ile Şablon Sunucu oluşturma](./01-ProxMox\Readme.md)
 
-## 1. [Proxmox Hypervisor ile Şablon Sunucu oluşturma](./01-ProxMox/01-SanalMakine-Olustur.md)
+## 2. [Terraform Bölümü](./02-Terraform)
 
-## 2. [Şablon sunucu yapılandırma](./01-ProxMox/02-SunucuYapilandirma.md)
+## 3. [HA-Failover Kullandığımız belgeler.](./03-HA-Failover)
 
-## 3. [Terraform](./02-Terraform/README.md)
-
-## 4. [Kubernetes Kurulum](./04-Kubernetes_Kurulum/README.md)
+## 4. [Min.io Kurulum & Yapılandırma ](./04-Backup/Readme.md)
 ---

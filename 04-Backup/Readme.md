@@ -59,7 +59,7 @@ Aşağıdaki Satırı en alta ekleyip **"ctrl+o"** ile kaydetip **"ctrl+x"** ile
 docker volume create --name minio --opt type=none --opt device=/mnt/Minioverinoktasi --opt o=bind
 ```
 ##### 2.Adım, Minio Container'ini çalıştırma.
-[Minio Docker Compose belgesini proje klasörüne buradan indirebilirsiniz.](\01-Minio\docker-compose.yml)
+[Minio Docker Compose belgesini proje klasörüne buradan indirebilirsiniz.](.\01-Minio\docker-compose.yml)
 ```bash
 docker compose up -d
 ```

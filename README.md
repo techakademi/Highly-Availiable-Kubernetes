@@ -2,7 +2,7 @@
 
 # High Available Kubernetes Bare Metal Notlar
 
-## 1. [Proxmox Hypervisor ile Şablon Sunucu oluşturma](./01-ProxMox\Readme.md)
+## 1. [Proxmox Hypervisor ile Şablon Sunucu oluşturma](./01-ProxMox/Readme.md)
 
 ## 2. [Terraform Bölümü](./02-Terraform)
 

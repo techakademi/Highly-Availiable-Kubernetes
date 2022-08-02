@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: whoami
+  namespace: default
+spec:
+  secretName: whoami-tls-staging
+  dnsNames:
+    - whoami.techakademi.com
+  issuerRef:
+    name: whoami-staging
+    kind: ClusterIssuer

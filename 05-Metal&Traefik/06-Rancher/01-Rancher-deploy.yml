@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rancher-demosu
+spec:
+  selector:
+    matchLabels:
+      app: rancher-demosu
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: rancher-demosu
+    spec:
+      containers:
+      - name: rancher-demosu
+        image: monachus/rancher-demo:latest

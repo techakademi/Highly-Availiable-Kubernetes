@@ -1,0 +1,16 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: havadurumu-production
+  namespace: default
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: techakademi@gmail.com
+    privateKeySecretRef:
+      name: havadurumu-production
+    solvers:
+    - selector: {}
+      http01:
+        ingress:
+          class: traefik

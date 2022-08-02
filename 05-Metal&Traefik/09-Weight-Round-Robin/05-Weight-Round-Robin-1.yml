@@ -1,0 +1,32 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: TraefikService
+metadata:
+  name: renkler-uygulama
+  namespace: default
+spec:
+  weighted:
+    services:
+      - name: skyblue-servisi
+        port: 80
+        weight: 3
+      - name: green-servisi
+        port: 80
+        weight: 2
+      - name: yellow-servisi
+        port: 80
+        weight: 1
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: renkler-uygulama-http
+  namespace: default
+spec:
+  entryPoints:
+    - web
+  routes:
+  - match: Host(`renkler.techakademi.com`)
+    kind: Rule
+    services:
+    - name: renkler-uygulama
+      kind: TraefikService

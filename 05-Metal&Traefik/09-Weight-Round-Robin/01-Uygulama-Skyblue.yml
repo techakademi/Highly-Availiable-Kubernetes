@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: skyblue
+spec:
+  selector:
+    matchLabels:
+      app: skyblue
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: skyblue
+    spec:
+      containers:
+      - name: skyblue-konteyneri
+        image: jpetazzo/webcolor #https://registry.hub.docker.com/r/jpetazzo/webcolor
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: skyblue-servisi
+  labels:
+    app: skyblue
+spec:
+  type: LoadBalancer
+  selector:
+    app: skyblue
+  ports:
+  - port: 80
+    targetPort: 8000
+    protocol: TCP

@@ -1,0 +1,75 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: havadurum
+spec:
+  selector:
+    matchLabels:
+      app: havadurum
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: havadurum
+    spec:
+      containers:
+      - name: havadrm-konteyneri
+        image: techakademi/havadrm:1
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: havadurum-servisi
+  labels:
+    app: havadurum
+spec:
+  type: LoadBalancer
+  selector:
+    app: havadurum
+  ports:
+  - port: 80
+    targetPort: 3000
+    protocol: TCP
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: havadurum-https-yonlendir
+spec:
+  redirectScheme:
+    scheme: https
+    permanent: true
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: havadurumu-ingress-http
+  namespace: default
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`hava.techakademi.com`)
+      kind: Rule
+      middlewares:
+        - name: havadurum-https-yonlendir
+      services:
+        - name: havadurum-servisi
+          port: 80
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: havadurumu-ingress-https
+  namespace: default
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`hava.techakademi.com`)
+      kind: Rule
+      services:
+        - name: havadurum-servisi
+          port: 80
+  tls:
+    secretName: havadurumu-tls-production

@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: techakademi
+spec:
+  selector:
+    matchLabels:
+      app: techakademi
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: techakademi
+    spec:
+      containers:
+      - name: techakademi-konteyneri
+        image: techakademi/ithost:3.1
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: techakademi-servisi
+  labels:
+    app: techakademi
+spec:
+  type: LoadBalancer
+  selector:
+    app: techakademi
+  ports:
+  - port: 80
+    protocol: TCP
+  
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: techakademi-ingress
+  namespace: default
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`www.techakademi.com`)
+      kind: Rule
+      services:
+        - name: techakademi-servisi
+          port: 80
+  tls:
+    secretName: techakademi-tls-staging

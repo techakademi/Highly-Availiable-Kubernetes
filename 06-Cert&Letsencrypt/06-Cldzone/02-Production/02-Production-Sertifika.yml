@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: cloudzone
+  namespace: default
+spec:
+  secretName: cloudzone-tls-production
+  dnsNames:
+    - www.cloudtechakademi.com
+  issuerRef:
+    name: cloudzone-production
+    kind: ClusterIssuer

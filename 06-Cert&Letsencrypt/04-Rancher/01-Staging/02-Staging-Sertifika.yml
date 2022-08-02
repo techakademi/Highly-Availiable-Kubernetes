@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: rancher
+  namespace: default
+spec:
+  secretName: rancher-tls-staging
+  dnsNames:
+    - demorancher.techakademi.com
+  issuerRef:
+    name: rancher-staging
+    kind: ClusterIssuer

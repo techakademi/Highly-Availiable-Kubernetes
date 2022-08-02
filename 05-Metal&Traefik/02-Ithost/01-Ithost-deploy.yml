@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ithost
+spec:
+  selector:
+    matchLabels:
+      app: ithost
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: ithost
+    spec:
+      containers:
+      - name: ithost-konteyneri
+        image: techakademi/ithost:3.1

@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: whoami-tls
+  namespace: default
+spec:
+  secretName: whoami-tls-production
+  dnsNames:
+    - whoami.techakademi.com
+  issuerRef:
+    name: whoami-production
+    kind: ClusterIssuer

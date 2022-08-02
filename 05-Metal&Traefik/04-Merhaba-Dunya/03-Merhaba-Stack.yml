@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: merhaba-dunya
+spec:
+  selector:
+    matchLabels:
+      app: merhaba-dunya
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: merhaba-dunya
+    spec:
+      containers:
+      - name: merhaba-konteyneri
+        image: techakademi/merhabadunya:1
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: merhaba-servisi
+  labels:
+    app: merhaba-dunya
+spec:
+  type: LoadBalancer
+  selector:
+    app: merhaba-dunya
+  ports:
+  - port: 80
+    targetPort: 3000
+    protocol: TCP
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: merhaba-ingress
+  namespace: default
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`merhaba.techakademi.com`)
+      kind: Rule
+      services:
+        - name: merhaba-servisi
+          port: 80

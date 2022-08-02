@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloudtechakademi
+spec:
+  selector:
+    matchLabels:
+      app: cloudtechakademi
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: cloudtechakademi
+    spec:
+      containers:
+      - name: cloudtech-konteyneri
+        image: techakademi/cldzone:2
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cloudzone-servisi
+  labels:
+    app: cloudtechakademi
+spec:
+  type: LoadBalancer
+  selector:
+    app: cloudtechakademi
+  ports:
+  - port: 80
+    targetPort: 3000
+    protocol: TCP
+  
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: cloudzone-ingress
+  namespace: default
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`www.cloudtechakademi.com`)
+      kind: Rule
+      services:
+        - name: cloudzone-servisi
+          port: 80
+  tls:
+    secretName: cloudzone-tls-staging

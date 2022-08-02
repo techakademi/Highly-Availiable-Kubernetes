@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ithost-servisi
+  labels:
+    app: ithost
+spec:
+  type: LoadBalancer
+  selector:
+    app: ithost
+  ports:
+  - port: 80
+    protocol: TCP

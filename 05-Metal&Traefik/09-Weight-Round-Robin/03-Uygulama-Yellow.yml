@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: yellow
+spec:
+  selector:
+    matchLabels:
+      app: yellow
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: yellow
+    spec:
+      containers:
+      - name: yellow-konteyneri
+        image: jpetazzo/webcolor #https://registry.hub.docker.com/r/jpetazzo/webcolor
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: yellow-servisi
+  labels:
+    app: yellow
+spec:
+  type: LoadBalancer
+  selector:
+    app: yellow
+  ports:
+  - port: 80
+    targetPort: 8000
+    protocol: TCP

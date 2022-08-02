@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: cloudzone
+  namespace: default
+spec:
+  secretName: cloudzone-tls-staging
+  dnsNames:
+    - www.cloudtechakademi.com
+  issuerRef:
+    name: cloudzone-staging
+    kind: ClusterIssuer

@@ -1,0 +1,79 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rancher-demosu
+spec:
+  selector:
+    matchLabels:
+      app: rancher-demosu
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: rancher-demosu
+    spec:
+      containers:
+      - name: rancher-demosu
+        image: monachus/rancher-demo:latest
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rancher-servisi
+  labels:
+    app: rancher-demosu
+spec:
+  type: LoadBalancer
+  selector:
+    app: rancher-demosu
+  ports:
+  - port: 80
+    targetPort: 8080
+    protocol: TCP
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: rancher-https-yonlendir
+spec:
+  redirectScheme:
+    scheme: https
+    permanent: true
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: rancher-ingress-http
+  namespace: default
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`demorancher.techakademi.com`)
+      kind: Rule
+      middlewares:
+        - name: rancher-https-yonlendir
+      services:
+        - name: rancher-servisi
+          port: 80
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: rancher-ingress-https
+  namespace: default
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`demorancher.techakademi.com`)
+      kind: Rule
+      services:
+        - name: rancher-servisi
+          port: 80
+  tls:
+    secretName: rancher-tls-production
+        
+        
+        
+        

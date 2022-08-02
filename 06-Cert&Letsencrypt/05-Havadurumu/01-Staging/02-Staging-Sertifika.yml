@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: havadurumu
+  namespace: default
+spec:
+  secretName: havadurumu-tls-staging
+  dnsNames:
+    - hava.techakademi.com
+  issuerRef:
+    name: havadurumu-staging
+    kind: ClusterIssuer

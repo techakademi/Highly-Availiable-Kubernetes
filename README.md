@@ -9,4 +9,8 @@
 ## 3. [HA-Failover Kullandığımız belgeler.](./03-HA-Failover)
 
 ## 4. [Min.io Kurulum & Yapılandırma ](./04-Backup/Readme.md)
+
+## 5. [MetalLB & Traefik Kurulum & Yapılandırma ](./05-Metal&Traefik)
+
+## 6. [Cert&Letsencrypt Kurulum & Yapılandırma ](./06-Cert&Letsencrypt)
 ---
